@@ -1,29 +1,32 @@
 {
     "name": "dotenv",
-    "displayName": "DotENV",
-    "description": "Support for dotenv file syntax",
-    "version": "1.0.1",
-    "publisher": "mikestead",
+    "displayName": "DotENV (Updated 2023)",
+    "description": "Support for dotenv file syntax (added semantic features)",
+    "version": "2.0.0",
+    "publisher": "maIIady",
+    "main": "output.js",
+    "browser": "output.js",
     "license": "MIT",
     "engines": {
-        "vscode": "^1.5.1"
+        "vscode": "^1.76.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "keywords": [
         "env",
         "dotenv"
     ],
+    "scripts": {
+        "watch": "pnpm build --watch",
+        "vscode:prepublish": "esbuild src/index.ts --outfile=output.js --external:vscode --platform=browser --bundle --format=cjs"
+    },
     "icon": "images/icon.png",
     "galleryBanner": {
         "color": "#3E1661",
         "theme": "dark"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mikestead/vscode-dotenv.git"
-    },
+    "repository": "https://github.com/maIIady/vscode-dotenv",
     "contributes": {
         "languages": [
             {
@@ -75,5 +78,23 @@
                 "path": "./syntaxes/env.tmLanguage"
             }
         ]
+    },
+    "dependencies": {
+        "@types/vscode": "1.76.x",
+        "esbuild": "^0.18.14"
+    },
+    "devDependencies": {
+        "@zardoy/tsconfig": "^1.5.0",
+        "typescript": "^5.1.6"
+    },
+    "prettier": {
+        "semi": false,
+        "singleQuote": true,
+        "proseWrap": "never",
+        "tabWidth": 4,
+        "trailingComma": "all",
+        "arrowParens": "avoid",
+        "printWidth": 160,
+        "endOfLine": "auto"
     }
 }
